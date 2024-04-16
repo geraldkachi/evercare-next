@@ -135,8 +135,7 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
                   {chronicConditionData.map(({value}) => {
                   const index = chronicCondition?.indexOf(value);
                   const isSelected = index !== -1;
-                  // console.log(isSelected, 'isSelected')
-                  // console.log(index, 'index')
+                  
                   const radio = false;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
