@@ -891,6 +891,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
  
  
              {yesOpt && <div>
+              {/* @ts-ignore */}
                <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
                  disabled={!whatIsTheNatureOfThePain.length || !whatIsTheNatureOfYourMobilityEnd.length || !whereIsThisPainFelt || loading}
                  className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
