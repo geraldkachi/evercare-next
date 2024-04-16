@@ -143,6 +143,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
           
 
           <div>
+            {/* @ts-ignore */}
             <Button title="Continue" disabled={disabledProps}  onClick={() => {useCountStore.setState({count: count + 1})}} className="mt-5 mb-10 te w-full sm:w-[unset]" />
           </div>
         </div>
