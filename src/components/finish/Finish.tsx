@@ -55,8 +55,6 @@ const Finish = () => {
                 date: '',
                 others: '',
                 phoneNumber: '',
-                password: '',
-                confirmPassword: '',
                 gender: '', // 'male', 'female' or '' for unselected
                 othersHistor: '',
                 othersMedicalHistory: '',
