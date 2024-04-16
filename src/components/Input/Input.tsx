@@ -5,8 +5,8 @@ type Props = {
 	tooltip?: string;
 	helptext?: string;
 	inputClassName?: string;
-	LeadingIcon?: () => JSX.Element | undefined | Function;
-	TrailingIcon?: () => JSX.Element | undefined | Function;
+	LeadingIcon?: () => JSX.Element
+	TrailingIcon?: () => JSX.Element
 	// innerRef?: any;
 	inputType?: 'default' | 'success' | 'warning' | 'error';
 	inputClass?: string;
