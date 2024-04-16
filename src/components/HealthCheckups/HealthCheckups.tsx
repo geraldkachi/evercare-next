@@ -176,6 +176,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
           
 
           <div>
+            {/* @ts-ignore */}
           <Button title="Continue" disabled={disabledProps} onClick={() => {useCountStore.setState({count: count + 1})}} className="mt-5 te w-full sm:w-[unset]" />
           </div>
         </div>
