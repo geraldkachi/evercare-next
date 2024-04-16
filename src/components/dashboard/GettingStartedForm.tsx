@@ -125,7 +125,6 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
 
             {yesOpt == 'yes' && (
               <div>
-                {/* <div className="my-5" /> */}
                 <hr className="border my-8 border-black " />
                 <div className="break-all mb-10">
                   <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">What condition/s are your managing?</div>
