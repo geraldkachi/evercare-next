@@ -19,6 +19,7 @@ type Props = DetailedHTMLProps<
     prefixIcon?: React.ReactNode;
     suffixIcon?: React.ReactNode;
     children?: ReactNode
+    title:? string
 };
 
 const variants = {
@@ -49,6 +50,7 @@ const Button : React.FC = ({
     variant = 'primary',
     prefixIcon = null,
     suffixIcon = null,
+    title: = '',
     ...rest
 }: Props) => {
     return (
