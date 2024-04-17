@@ -8,15 +8,13 @@ import { useRouter } from "next/router";
 import Button from "../Button/Button";
 
 const schema = yup.object().shape({
-  phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
-  firstName: yup.string().required(),
+  phoneNumber: yup.string().matches(/^234[789][01]\d{8}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
+  // phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
+  fullName: yup.string().required(),
   email: yup.string().required(),
-  date: yup.string().required(),
-  address: yup.string().required(),
-  gender: yup.string().required()
 })
 
-const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
+const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
   const router = useRouter();
 
   const [step, setStep] = useState('')
@@ -29,43 +27,42 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
   const phoneNumber = useCountStore((state) => state.form.phoneNumber);
   const gender = useCountStore((state) => state.form.gender);
   const others = useCountStore((state) => state.form.others);
+  const errorRequest = useCountStore((state) => state.error);
   const [yesOpt, setYesOpt] = useState('')
-  const [error, setError] = useState('');
+  const [error, setErrorVal] = useState('');
 
-  // const [selectedValues, setSelectedValues] = useState<{value: string, label: string}[]>([]);
-  // interface ArrayType {
-  //     value: string, 
-  //     label: string
-  // }
-
-  
   const displayBtn = !phoneNumber || !fullName || !email || !gender || !address || !date;
 
-  const handleFull = (e: React.ChangeEvent<HTMLInputElement>) => {
-    useCountStore.setState({
-      form: {
-        ...form,
-        fullName: String(e.target.value),
-      },
-    });
+  const handleFull = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      // await schema.validate({ fullName });
+      useCountStore.setState({
+        form: {
+          ...form,
+          fullName: String(e.target.value),
+        },
+      });
   };
 
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    useCountStore.setState({
-      form: {
-        ...form,
-        email: String(e.target.value),
-      },
-    });
+  const handleEmail = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      // await schema.validate({ email });
+      useCountStore.setState({
+        form: {
+          ...form,
+          email: String(e.target.value),
+        },
+      });
+    
   };
-  const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    useCountStore.setState({
-      form: {
-        ...form,
-        phoneNumber: String(e.target.value),
-      },
-    });
-    setError('');
+
+
+  const handlePhoneNumber = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      // await schema.validate({ phoneNumber });
+      useCountStore.setState({
+        form: {
+          ...form,
+          phoneNumber: String(e.target.value).replace(/\D/g, '').slice(0, 11),
+        },
+      });
   };
   const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     useCountStore.setState({
@@ -82,8 +79,8 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
         address: String(e.target.value),
       },
     });
-    setError('');
   };
+
   const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
     useCountStore.setState({
       form: {
@@ -91,22 +88,26 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
         others: String(e.target.value),
       },
     });
-    setError('');
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    schema
-      .validate({ phoneNumber })
-      .then(() => {
+  const handleSubmit = async () => {
+    // e.preventDefault();
+     schema.validate({ phoneNumber, email, fullName })
+      .then((isValid) => {
+        if (isValid) {
+          setStep('lief')
+        }
         // Validation success
-        // console.log('Valid phone number:', phoneNumber);
+        console.log('Valid phone number:', phoneNumber);
         // Here you can perform further actions like submitting the form
       })
       .catch((validationError) => {
         // Validation failed
         // console.error('Validation error:', validationError);
-        setError(validationError.errors[0]);
+        if (validationError instanceof yup.ValidationError) {
+          setErrorVal(validationError.message);
+          console.log(validationError.message);
+        }
       });
   };
 
@@ -122,7 +123,7 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
 
             <div className="flex items-start flex-1 gap-2 w-full md:pr-32">
               <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-              <div onClick={() => {setYesOpt('no'); useCountStore.setState({chronicCondition: []});}} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-4 py-6 w-full text-center bg-white`}>No, I’m not / I don’t</div>
+              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-4 py-6 w-full text-center bg-white`}>No, I’m not / I don’t</div>
             </div>
 
             {yesOpt == 'yes' && (
@@ -134,69 +135,70 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 max-w-fit">
-                  {chronicConditionData.map(({value}) => {
-                  const index = chronicCondition?.indexOf(value);
-                  const isSelected = index !== -1;
-                  
-                  const radio = false;
-                  const RBoxgrouplogic = (): void => {
-                    if (radio) {
-                      useCountStore.setState({chronicCondition: [value]});
-                    } else {
-                      if (isSelected) {
-                        chronicCondition?.splice(index, 1);
-                      } else {
-                        chronicCondition?.push(value);
-                      }
-                      useCountStore.setState({chronicCondition: [...chronicCondition]});
-                    }
-                  };
+                  {chronicConditionData.map(({ value }) => {
+                    const index = chronicCondition?.indexOf(value);
+                    const isSelected = index !== -1;
 
-                  return (
-                  <div key={value} 
-                  onClick={RBoxgrouplogic}
-                  // onClick={() =>
-                  //   // useCountStore.setState({chronicCondition: ()});
-                  //   setSelectedValues((prev) => {
-                  //     const spr = [...prev]
-                  //     const i = spr.indexOf(item.value)
-                  //     if (i > -1 || isSelected) {
-                  //       spr.splice(i, 1)
-                  //     } else  {
-                  //       spr.push(item.value)
-                  //     }
-                  //     return spr
-                  //   })}
-                     className={`${chronicCondition?.includes(value) && '!border !border-purple-600 text-purple-600' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
-                  )}
+                    const radio = false;
+                    const RBoxgrouplogic = (): void => {
+                      if (radio) {
+                        useCountStore.setState({ chronicCondition: [value] });
+                      } else {
+                        if (isSelected) {
+                          chronicCondition?.splice(index, 1);
+                        } else {
+                          chronicCondition?.push(value);
+                        }
+                        useCountStore.setState({ chronicCondition: [...chronicCondition] });
+                      }
+                    };
+
+                    return (
+                      <div key={value}
+                        onClick={RBoxgrouplogic}
+                        // onClick={() =>
+                        //   // useCountStore.setState({chronicCondition: ()});
+                        //   setSelectedValues((prev) => {
+                        //     const spr = [...prev]
+                        //     const i = spr.indexOf(item.value)
+                        //     if (i > -1 || isSelected) {
+                        //       spr.splice(i, 1)
+                        //     } else  {
+                        //       spr.push(item.value)
+                        //     }
+                        //     return spr
+                        //   })}
+                        className={`${chronicCondition?.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    )
+                  }
                   )}
                 </div>
 
                 <Input
-                label="Others?"
-                value={others}
-                className="my-10"
-                type="text"
-                onChange={handleOthers}
-                name="others"
-                placeholder="Please state"
-              />
+                  label="Others?"
+                  value={others}
+                  className="my-10"
+                  type="text"
+                  onChange={handleOthers}
+                  name="others"
+                  placeholder="Please state"
+                />
               </div>
             )}
 
             <div>
               {/* @ts-ignore */}
-              <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition?.length)  || (yesOpt === 'no'&& chronicCondition?.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
+              <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition?.length) || (yesOpt === 'no' && chronicCondition?.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                 if (yesOpt == 'yes') {
-                  if(error) {
+                  if (errorRequest) {
                     alert('TSomething Went Wrong');
-                  } else{
+                  } else {
                     router.push('/a-second-opinion')
                   }
                   appendSpreadsheet()
                   console.log(useCountStore.getState());
                 } else if (yesOpt == 'no') {
-                  useCountStore.setState({count: count + 1})
+                  useCountStore.setState({ count: count + 1 })
                 }
               }} />
             </div>
@@ -262,20 +264,21 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
               label="What’s your phone number?"
               className="mb-1"
               value={phoneNumber}
-              type="tel"
+              type="text"
               onChange={handlePhoneNumber}
               name="phoneNumber"
               placeholder="  +234 | Your number goes here"
               LeadingIcon={() => <img className="pl-3" src="nigeria-flag.svg" />}
+              // helptext={error}
             />
-            {error && <div className="text-red-600 text-xs">{error}</div>}
 
             <div>
               <label className="my-1 text-[#0D1227] leading-[19.6px] flex items-center text-left text-xs md:text-sm font-">Enter your address here (Optional)</label>
               <textarea value={address} onChange={handleAddress} rows={5} className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-[4px] border border-[#424242] focus:bg-white focus:border focus:outline-none focus:border-[#1D8EE6] placeholder:text-[#ABABAB] placeholder:leading-6" placeholder="Write your thoughts here..."></textarea>
             </div>
+            {error && <div className="text-red-600 my-4 text-center text-xs">{error}</div>}
             {/* @ts-ignore */}
-            <Button title="Continue" disabled={displayBtn} className="mt-5 te w-full sm:w-[unset]" onClick={() => { setStep('lief') }} />
+            <Button title="Continue" disabled={displayBtn} className="mt-5 te w-full sm:w-[unset]" onClick={() => { handleSubmit() }} />
           </div>
         </form>
       }

@@ -103,7 +103,3 @@ export default function Input(
 		</div>
 	);
 };
-// ${inputType === 'default' && 'border-[#DEDEC]'}
-// ${inputType === 'success' && 'border-[#4BB543]'}
-// ${inputType === 'error' && 'border-[#FF0000]'}
-// ${inputType === 'warning' && 'border-[#ff9966]'}
