@@ -158,8 +158,13 @@ export async function getServerSideProps({}) {
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
+  console.log({credentials: {
+    private_key: NEXT_PUBLIC_PRIVATE_KEY,
+    client_email: NEXT_PUBLIC_CLIENT_EMAIL
+  }})
   let error = ''
   const token = await auth.getAccessToken().catch(err => {
+    console.log(err);
     error = String(err.message) 
   })
   
