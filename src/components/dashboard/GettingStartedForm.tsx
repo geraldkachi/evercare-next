@@ -7,11 +7,29 @@ import { chronicConditionData } from "../../data/data";
 import { useRouter } from "next/router";
 import Button from "../Button/Button";
 
+
+type Field = {
+  fullName?: string,
+  email?: string,
+  phoneNumber?: string
+}
 const schema = yup.object().shape({
-  phoneNumber: yup.string().matches(/^234[789][01]\d{8}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
+  // phoneNumber: yup.string().matches(/^234[789][01]\d{8}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
   // phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
-  fullName: yup.string().required(),
-  email: yup.string().required(),
+  phoneNumber: yup.string()
+  .required('Phone number is required')
+  .matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number format')
+  .max(14, 'Nigerian phone number should be 14 digits including +234'),
+
+  // phoneNumber: yup.string()
+  //   .matches(/^\+234[0-9]{10}$/, 'Phone number must start with +234 and be 14 digits long')
+  //   .when('+234', {
+  //     is: '+234',
+  //     then: yup.string().max(14, 'Phone number must be 14 digits long').required('Phone number is required'),
+  //     otherwise: yup.string().max(11, 'Phone number must be 11 digits long').required('Phone number is required'),
+  //   }),
+  fullName: yup.string().required('FullName is required').min(3, 'Full Name must be at least 3 characters'),
+  email: yup.string().email('Invalid email address').required('Email is required'),
 })
 
 const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
@@ -29,40 +47,41 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
   const others = useCountStore((state) => state.form.others);
   const errorRequest = useCountStore((state) => state.error);
   const [yesOpt, setYesOpt] = useState('')
-  const [error, setErrorVal] = useState('');
+  const [error, setErrorVal] = useState<Field>({});
 
   const displayBtn = !phoneNumber || !fullName || !email || !gender || !address || !date;
 
   const handleFull = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      // await schema.validate({ fullName });
-      useCountStore.setState({
-        form: {
-          ...form,
-          fullName: String(e.target.value),
-        },
-      });
+    // await schema.validate({ fullName });
+    useCountStore.setState({
+      form: {
+        ...form,
+        fullName: String(e.target.value),
+      },
+    });
   };
 
   const handleEmail = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      // await schema.validate({ email });
-      useCountStore.setState({
-        form: {
-          ...form,
-          email: String(e.target.value),
-        },
-      });
-    
+    // await schema.validate({ email });
+    useCountStore.setState({
+      form: {
+        ...form,
+        email: String(e.target.value),
+      },
+    });
+
   };
 
 
   const handlePhoneNumber = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      // await schema.validate({ phoneNumber });
-      useCountStore.setState({
-        form: {
-          ...form,
-          phoneNumber: String(e.target.value).replace(/\D/g, '').slice(0, 11),
-        },
-      });
+    // await schema.validate({ phoneNumber });
+    useCountStore.setState({
+      form: {
+        ...form,
+        phoneNumber: String(e.target.value)
+        // phoneNumber: String(e.target.value).replace(/\D/g, '').slice(0, 11),
+      },
+    });
   };
   const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     useCountStore.setState({
@@ -92,7 +111,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
 
   const handleSubmit = async () => {
     // e.preventDefault();
-     schema.validate({ phoneNumber, email, fullName })
+    schema.validate({ phoneNumber, email, fullName }, { abortEarly: false })
       .then((isValid) => {
         if (isValid) {
           setStep('lief')
@@ -105,8 +124,14 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
         // Validation failed
         // console.error('Validation error:', validationError);
         if (validationError instanceof yup.ValidationError) {
-          setErrorVal(validationError.message);
-          console.log(validationError.message);
+          const errors = validationError.inner.reduce((acc: any, error: any) => {
+            acc[error.path] = error.message;
+            return acc;
+          }, {});
+          setErrorVal(errors);
+          // setErrorVal(validationError.message);
+          // console.log(validationError);
+
         }
       });
   };
@@ -269,14 +294,16 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
               name="phoneNumber"
               placeholder="  +234 | Your number goes here"
               LeadingIcon={() => <img className="pl-3" src="nigeria-flag.svg" />}
-              // helptext={error}
+            // helptext={error}
             />
 
             <div>
               <label className="my-1 text-[#0D1227] leading-[19.6px] flex items-center text-left text-xs md:text-sm font-">Enter your address here (Optional)</label>
               <textarea value={address} onChange={handleAddress} rows={5} className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-[4px] border border-[#424242] focus:bg-white focus:border focus:outline-none focus:border-[#1D8EE6] placeholder:text-[#ABABAB] placeholder:leading-6" placeholder="Write your thoughts here..."></textarea>
             </div>
-            {error && <div className="text-red-600 my-4 text-center text-xs">{error}</div>}
+            {error && <div className="text-red-600 my-4 text-center text-xs">{error.phoneNumber}</div>}
+            {error && <div className="text-red-600 my-4 text-center text-xs">{error.fullName}</div>}
+            {error && <div className="text-red-600 my-4 text-center text-xs">{error.email}</div>}
             {/* @ts-ignore */}
             <Button title="Continue" disabled={displayBtn} className="mt-5 te w-full sm:w-[unset]" onClick={() => { handleSubmit() }} />
           </div>
