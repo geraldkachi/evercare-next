@@ -15,20 +15,20 @@ const {
 } = process.env
 
 
- type Props = {
-    token: string
-    error: string
- }
+type Props = {
+  token: string
+  error: string
+}
 
-const GettingStarted = ({token, error}: Props) => {
+const GettingStarted = ({ token, error }: Props) => {
   const count = useCountStore(state => state.count)
   // const error = useCountStore(state => state.error)
   const form = useCountStore(state => state.form)
   const chronicCondition = useCountStore.getState().chronicCondition
   const underliningcondition = useCountStore.getState().underliningcondition
   const dataOnject = {
-    firstName: useCountStore.getState().form.firstName,
-    lastName: useCountStore.getState().form.lastName,
+    fullName: useCountStore.getState().form.fullName,
+    email: useCountStore.getState().form.email,
     phoneNumber: useCountStore.getState().form.phoneNumber,
     date: useCountStore.getState().form.date,
     gender: useCountStore.getState().form.gender,
@@ -56,8 +56,8 @@ const GettingStarted = ({token, error}: Props) => {
     currentlyManagingAnyoFtheseConditions: useCountStore.getState().currentlyManagingAnyoFtheseConditions[0],
   }
 
-   const appendSpreadsheet = async () => {
-    useCountStore.setState({loading: true})
+  const appendSpreadsheet = async () => {
+    useCountStore.setState({ loading: true })
     const doc = new GoogleSpreadsheet(`${process.env.NEXT_PUBLIC_SPREADSHEET_ID}`, { token: token });
     try {
       await doc.loadInfo();
@@ -70,12 +70,13 @@ const GettingStarted = ({token, error}: Props) => {
       //   client_email: NEXT_PUBLIC_CLIENT_EMAIL
       // });
       const result = await sheet.addRow(dataOnject);
-      
-      useCountStore.setState({loading: false})
+      console.log(dataOnject,'dataOnject')
+
+      useCountStore.setState({ loading: false })
       return result;
     } catch (e: any) {
-      useCountStore.setState({error: String(e.message) || ''})
-      useCountStore.setState({loading: false})
+      useCountStore.setState({ error: String(e.message) || '' })
+      useCountStore.setState({ loading: false })
       console.log(e, 'error loading')
     }
   };
@@ -90,59 +91,63 @@ const GettingStarted = ({token, error}: Props) => {
   //     },
   //     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   //   });
-  
+
   //   // const sheets = google.sheets({ version: 'v4', auth });
-  
+
   //   // Load the Google Spreadsheet using the google-spreadsheet library
   //   const doc = new GoogleSpreadsheet(`${process.env.NEXT_PUBLIC_SPREADSHEET_ID}`, {token});
-    
+
   //   // await doc.useServiceAccountAuth({
   //   //   client_email: NEXT_PUBLIC_CLIENT_EMAIL,
   //   //   private_key: NEXT_PUBLIC_PRIVATE_KEY,
   //   // });
   //   await doc.loadInfo();
-  
+
   //   // Access the specific sheet by its ID
   //   const sheet = doc.sheetsById[Number(NEXT_PUBLIC_SHEET_ID)];
-  
+
   //   // Update rows
   //   const rowsToUpdate = [
   //     { index: 0, values: ['Updated Value 1', 'Updated Value 2'] },
   //     { index: 1, values: ['Updated Value 3', 'Updated Value 4'] },
   //     // Add more rows to update as needed
   //   ];
-  
+
   //   for (const row of rowsToUpdate) {
   //     await sheet.loadCells(`A${row.index + 1}:B${row.index + 1}`);
   //     const cell1 = sheet.getCell(row.index, 0);
   //     const cell2 = sheet.getCell(row.index, 1);
-  
+
   //     cell1.value = row.values[0];
   //     cell2.value = row.values[1];
-  
+
   //     await sheet.saveUpdatedCells();
   //   }
-  
+
   //   console.log('Rows updated successfully.');
   // }
-  
+
   // // Call the function to update the spreadsheet
   // updateSpreadsheet();
 
   return (
     <div className="sm:mx-20 max-w-2x">
       {error ? <div className="">
-      {error}
+        {error}
       </div> : (
         <div className="flex justify-center h-screen">
-        <Sidebar />
-        <div className="flex flex-1 mx-10 my-4 md:my-8 w-full overflow-y-scroll no-scrollbar">
-          {count === 1 && <GettingStartedForm  {...{appendSpreadsheet}} />}
-          {count === 2 && <Lifestyle />}
-          {count === 3 && <HealthCheckups />}
-          {count === 4 && <MedicalHistory {...{appendSpreadsheet}} />}
+          {!token ? <div className="flex items-center justify-center text-3xl text-white bg-[#1C1C1C] h-screen">Loading ...</div> : (
+            <>
+              <Sidebar />
+              <div className="flex flex-1 mx-10 my-4 md:my-8 w-full overflow-y-scroll no-scrollbar">
+                {count === 1 && <GettingStartedForm  {...{ appendSpreadsheet }} />}
+                {count === 2 && <Lifestyle />}
+                {count === 3 && <HealthCheckups />}
+                {count === 4 && <MedicalHistory {...{ appendSpreadsheet }} />}
+              </div>
+            </>
+          )}
         </div>
-      </div>
       )}
     </div>
   );
@@ -150,7 +155,7 @@ const GettingStarted = ({token, error}: Props) => {
 
 export default GettingStarted;
 
-export async function getServerSideProps({}) {
+export async function getServerSideProps({ }) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
@@ -158,17 +163,19 @@ export async function getServerSideProps({}) {
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
-  console.log({credentials: {
-    private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
-    client_email: NEXT_PUBLIC_CLIENT_EMAIL
-  }})
-  
+  console.log({
+    credentials: {
+      private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
+      client_email: NEXT_PUBLIC_CLIENT_EMAIL
+    }
+  })
+
   let error = ''
   const token = await auth.getAccessToken().catch(err => {
-    console.log(err);
-    error = String(err.message) 
+    // console.log(err);
+    // error = String(err.message)
   })
-  
+
   return {
     props: {
       token: token || '',

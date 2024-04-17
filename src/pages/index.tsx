@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useRouter} from "next/router";
 
 type DashboardProps = {}
 
 const Home: React.FC<DashboardProps> = () => {
     const router = useRouter();
+    const [loading, setLoading] = useState(false)
 
     return (
     <div className="h-screen flex flex-col items-center justify-center mx-auto">
@@ -23,7 +24,12 @@ const Home: React.FC<DashboardProps> = () => {
         together. <br className="mt-2" /> Thank you for choosing Evercare—we're here to support you
       </div>
 
-      <button onClick={() => router.push('/getting-started')} className="rounded-lg bg-[#002355] text-white py-2 px-4 md:px-10 text-center text-base font-normal leading-6 my-5" type="button">Let&apos;s get started</button>
+      <button onClick={() => {
+        if(loading){
+
+        }
+        router.push('/getting-started')
+      }} className="rounded-lg bg-[#002355] text-white py-2 px-4 md:px-10 text-center text-base font-normal leading-6 my-5" type="button">Let&apos;s get started</button>
     </div>
   </div>
   )

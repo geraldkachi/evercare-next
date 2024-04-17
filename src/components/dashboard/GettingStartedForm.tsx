@@ -10,7 +10,7 @@ import Button from "../Button/Button";
 const schema = yup.object().shape({
   phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
   firstName: yup.string().required(),
-  lastName: yup.string().required(),
+  email: yup.string().required(),
   date: yup.string().required(),
   address: yup.string().required(),
   gender: yup.string().required()
@@ -22,8 +22,8 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
   const [step, setStep] = useState('')
   const form = useCountStore((state) => state.form);
   const { count, chronicCondition } = useCountStore()
-  const firstName = useCountStore((state) => state.form.firstName);
-  const lastName = useCountStore((state) => state.form.lastName);
+  const fullName = useCountStore((state) => state.form.fullName);
+  const email = useCountStore((state) => state.form.email);
   const date = useCountStore((state) => state.form.date);
   const address = useCountStore((state) => state.form.address);
   const phoneNumber = useCountStore((state) => state.form.phoneNumber);
@@ -37,22 +37,24 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
   //     value: string, 
   //     label: string
   // }
-  const displayBtn = !phoneNumber || !firstName || !lastName || !gender || !address || !date;
 
-  const handleFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  
+  const displayBtn = !phoneNumber || !fullName || !email || !gender || !address || !date;
+
+  const handleFull = (e: React.ChangeEvent<HTMLInputElement>) => {
     useCountStore.setState({
       form: {
         ...form,
-        firstName: String(e.target.value),
+        fullName: String(e.target.value),
       },
     });
   };
 
-  const handleLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     useCountStore.setState({
       form: {
         ...form,
-        lastName: String(e.target.value),
+        email: String(e.target.value),
       },
     });
   };
@@ -176,7 +178,7 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
                 className="my-10"
                 type="text"
                 onChange={handleOthers}
-                name="lastName"
+                name="others"
                 placeholder="Please state"
               />
               </div>
@@ -215,19 +217,21 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
               <Input
                 label="What’s your name?"
                 className="mb-1"
-                value={firstName}
+                value={fullName}
                 type="text"
-                onChange={handleFirstName}
-                name="firstName"
-                placeholder="First Name"
+                onChange={handleFull}
+                name="fullName"
+                placeholder="Full Name"
+                helptext=''
               />
               <Input
-                value={lastName}
+                label="Email Address"
+                value={email}
                 className="mb-1"
-                type="text"
-                onChange={handleLastName}
-                name="lastName"
-                placeholder="hr@tch.com"
+                type="email"
+                onChange={handleEmail}
+                name="email"
+                placeholder="Email Address"
               />
             </div>
 

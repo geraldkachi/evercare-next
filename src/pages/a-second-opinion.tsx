@@ -50,7 +50,7 @@ const RequestASecondOpinion = () => {
                 country: '',
                 industry: '',
                 employeeSize: '',
-                firstName: '',
+                fullName: '',
                 lastName: '',
                 role: '',
                 email: '',

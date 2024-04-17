@@ -14,8 +14,7 @@ interface CountState {
     country: string,
     industry: string,
     employeeSize: string
-    firstName: string
-    lastName: string
+    fullName: string
     role: string
     email: string
     date: string
@@ -110,15 +109,12 @@ const useCountStore = create<CountState>()(
       country: '',
       industry: '',
       employeeSize: '',
-      firstName: '',
-      lastName: '',
+      fullName: '',
       role: '',
       email: '',
       date: '',
       others: '',
       phoneNumber: '',
-      password: '',
-      confirmPassword: '',
       gender: '', // 'male', 'female' or '' for unselected
       othersHistor: '',
       othersMedicalHistory: '',
@@ -141,8 +137,7 @@ const useCountStore = create<CountState>()(
         country: '',
         industry: '',
         employeeSize: '',
-        firstName: '',
-        lastName: '',
+        fullName: '',
         role: '',
         email: '',
         date: '',

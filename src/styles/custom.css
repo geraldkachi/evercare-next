@@ -30,8 +30,14 @@
       @apply bg-[#002355] text-[#001027];
   }
 
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* Add your custom styling here */
+  }
+
   input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
+    background: transparent !important;
     bottom: 0;
     color: transparent;
     cursor: pointer;
@@ -41,4 +47,5 @@
     right: 0;
     top: 0;
     width: auto;
+    border: 1px solid #0D1227 !important;
   }
