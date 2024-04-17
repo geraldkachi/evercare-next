@@ -187,7 +187,7 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
               <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition?.length)  || (yesOpt === 'no'&& chronicCondition?.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                 if (yesOpt == 'yes') {
                   if(error) {
-                    alert('TSomething went wrong when trying to');
+                    alert('TSomething Went Wrong');
                   } else{
                     router.push('/a-second-opinion')
                   }
