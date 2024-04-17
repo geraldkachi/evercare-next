@@ -153,15 +153,16 @@ export default GettingStarted;
 export async function getServerSideProps({}) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
-      private_key: NEXT_PUBLIC_PRIVATE_KEY,
+      private_key: String(`${NEXT_PUBLIC_PRIVATE_KEY}`).replace(/\\n/gm, "\n"),
       client_email: NEXT_PUBLIC_CLIENT_EMAIL
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   console.log({credentials: {
-    private_key: NEXT_PUBLIC_PRIVATE_KEY,
+    private_key: String(`${NEXT_PUBLIC_PRIVATE_KEY}`).replace(/\\n/gm, "\n"),
     client_email: NEXT_PUBLIC_CLIENT_EMAIL
   }})
+  
   let error = ''
   const token = await auth.getAccessToken().catch(err => {
     console.log(err);
