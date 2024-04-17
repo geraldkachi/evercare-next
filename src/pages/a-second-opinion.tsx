@@ -6,16 +6,13 @@ import Button from "@/components/Button/Button";
 const RequestASecondOpinion = () => {
     const router = useRouter();
     const { resetState } = useCountStore();
-    // const resetState = () => useCountStore.setState({}, true);
     useEffect(() => {
         useCountStore.setState({})
         resetState
         useCountStore.setState({
             count: 1,
-            // increment: () => set((state) => ({ count: state.count + 1 })),
-            // decrement: () => set((state) => ({ count: state.count - 1 })),
+
             complete: false,
-            // toggleComplete: () => ({ complete: !complete })),
             chronicCondition: [],
 
             dietaryPreference: [],
