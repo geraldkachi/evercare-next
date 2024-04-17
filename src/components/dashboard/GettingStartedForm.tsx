@@ -13,13 +13,18 @@ type Field = {
   email?: string,
   phoneNumber?: string
 }
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
 const schema = yup.object().shape({
-  // phoneNumber: yup.string().matches(/^234[789][01]\d{8}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
-  // phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
   phoneNumber: yup.string()
-  .required('Phone number is required')
-  .matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number format')
-  .max(14, 'Nigerian phone number should be 14 digits including +234'),
+        .matches(phoneRegExp, 'Invalid Nigerian phone number')
+        .required('Phone number is required'),
+  // phoneNumber: yup.string().matches(/^234[789][01]\d{8}$/, 'Invalid Nigerian phone number').required('Phone number is required'),
+  // phoneNumber: yup.string().matches(/^\+234\d{10}$/, 'Phone number must be 11 digits long').required('Phone number is required'),
+  // phoneNumber: yup.string()
+  // .required('Phone number is required')
+  // .matches(/^\+234\d{10}$/, 'Invalid Nigerian phone number format')
+  // .max(11, 'Nigerian phone number should be 14 digits including +234'),
 
   // phoneNumber: yup.string()
   //   .matches(/^\+234[0-9]{10}$/, 'Phone number must start with +234 and be 14 digits long')
@@ -78,8 +83,8 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
     useCountStore.setState({
       form: {
         ...form,
-        phoneNumber: String(e.target.value)
-        // phoneNumber: String(e.target.value).replace(/\D/g, '').slice(0, 11),
+        // phoneNumber: String(e.target.value)
+        phoneNumber: String(e.target.value).replace(/\D/g, '').slice(0, 11),
       },
     });
   };
