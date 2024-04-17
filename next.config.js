@@ -11,7 +11,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "evercare-next.vercel.app/",
         port: '',
-        pathnames: '/getting-started',
+        pathname: '/getting-started',
       },
     ],
   }
