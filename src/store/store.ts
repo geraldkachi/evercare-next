@@ -1,6 +1,5 @@
 
 import { create } from "zustand";
-// import { createJSONStorage, persist } from "zustand/middleware";
 
 interface CountState {
   count: number;
@@ -115,7 +114,7 @@ const useCountStore = create<CountState>()(
       date: '',
       others: '',
       phoneNumber: '',
-      gender: '', // 'male', 'female' or '' for unselected
+      gender: '', 
       othersHistor: '',
       othersMedicalHistory: '',
       contactInfoEmailnPhone: '',
@@ -126,7 +125,6 @@ const useCountStore = create<CountState>()(
       painFelt: '',
       engageInRegularPhysicalActivity: '',
       whereIsThisPainFelt: '',
-      // setGender: (newGender) => set({ gender: newGender }),
     },
     error: '',
     loading: false,
@@ -143,7 +141,7 @@ const useCountStore = create<CountState>()(
         date: '',
         others: '',
         phoneNumber: '',
-        gender: '', // 'male', 'female' or '' for unselected
+        gender: '', 
         othersHistor: '',
         othersMedicalHistory: '',
         contactInfoEmailnPhone: '',
@@ -156,15 +154,8 @@ const useCountStore = create<CountState>()(
         whereIsThisPainFelt: '',
       },
 
-    }, true), // Setzen Sie den Zustand auf einen leeren Zustand
+    }, true), 
   }),
-  // {
-  //   name: "count-store",
-  //   storage: createJSONStorage(() => localStorage)
-  //   // Use localStorage for web, AsyncStorage for React Native
-
-  // }
-  // )
 );
 
 export default useCountStore; 
