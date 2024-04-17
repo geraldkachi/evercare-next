@@ -9,9 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "evercare-next.vercel.app/",
-        port: '',
-        pathname: '/getting-started',
+        hostname: "**",
       },
     ],
   }
