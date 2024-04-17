@@ -668,7 +668,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                     (useCountStore.getState())
                     console.log(useCountStore.getState())                 
                     if(errorApi) {
-                      alert(`${errorApi}`);
+                      alert('Something Wrong Error occurred');
                     }  else {
                         router.push('/finish')
                       }
@@ -805,7 +805,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
 
                 console.log(useCountStore.getState())                 
                 if(errorApi) {
-                  alert(`${errorApi}`);
+                  alert('Something Went Wrong');
                 }  else {
                     router.push('/finish')
                   }
@@ -909,7 +909,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   (useCountStore.getState());
                   console.log(useCountStore.getState()) 
                   if(errorApi) {
-                    alert(`${errorApi}`);
+                    alert('Something Wrong Error occurred');
                   }  else {
                     router.push('/finish')
                   }
