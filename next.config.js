@@ -6,10 +6,11 @@ const nextConfig = {
   },
   // output: 'export',
   images: {
+    domains: ['https://evercare-next.vercel.app'],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "https://evercare-next.vercel.app/",
+        hostname: "https://evercare-next.vercel.app",
         port: '',
         pathname: '/getting-started',
       },
