@@ -186,7 +186,11 @@ const GettingStartedForm = ({appendSpreadsheet}: any): JSX.Element => {
               {/* @ts-ignore */}
               <Button title={`${yesOpt == 'yes' ? 'Finish' : 'Continue'}`} disabled={!yesOpt || (yesOpt == 'yes' && !chronicCondition?.length)  || (yesOpt === 'no'&& chronicCondition?.length as unknown as boolean)} className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                 if (yesOpt == 'yes') {
-                  router.push('/a-second-opinion')
+                  if(error) {
+                    alert('TSomething went wrong when trying to');
+                  } else{
+                    router.push('/a-second-opinion')
+                  }
                   appendSpreadsheet()
                   console.log(useCountStore.getState());
                 } else if (yesOpt == 'no') {

@@ -3,8 +3,8 @@ import {useRouter} from "next/router";
 
 type DashboardProps = {}
 
-const Home: React.FC<DashboardProps> = (props) => {
-    const router = useRouter()
+const Home: React.FC<DashboardProps> = () => {
+    const router = useRouter();
 
     return (
     <div className="h-screen flex flex-col items-center justify-center mx-auto">

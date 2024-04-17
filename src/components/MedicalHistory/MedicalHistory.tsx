@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 
 const MedicalHistory = ({appendSpreadsheet}: any) => {
   const loading = useCountStore(state => state.loading)
+  const errorApi = useCountStore(state => state.error)
   const router = useRouter()
 
   const [step, setStep] = useState('')
@@ -302,9 +303,11 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                       setStep('managing-conditions')
                     } else if (yesOpt == 'no') {
                       (useCountStore.getState())
-                      console.log(useCountStore.getState())       
-                                    
-                      router.push('/finish')
+                      if(errorApi) {
+                        alert(`${"Something went wrong "}`);
+                      }  else {
+                        router.push('/finish')
+                      }
                       appendSpreadsheet()
                     }
                   }} />
@@ -664,7 +667,11 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                    if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
                     (useCountStore.getState())
                     console.log(useCountStore.getState())                 
-                      router.push('/finish')
+                    if(errorApi) {
+                      alert(`${errorApi}`);
+                    }  else {
+                        router.push('/finish')
+                      }
                       appendSpreadsheet()
                    }
                  }} />
@@ -791,13 +798,17 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
             {yesOpt && <div>
               {/* @ts-ignore */}
               <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
-                disabled={!historyOfAnyChronicDiseases.length || !experiencedAnySignificantChangesInYourFealthoRLifestyleRecently.length || !doYouFeelPainWhenCarryingOutTheseActivities.length || !engageInRegularPA || loading}
+                disabled={!historyOfAnyChronicDiseases.length || !experiencedAnySignificantChangesInYourFealthoRLifestyleRecently.length || !doYouFeelPainWhenCarryingOutTheseActivities.length || loading}
                 className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                   if (yesOpt == 'yes' && doYouFeelPainWhenCarryingOutTheseActivities[0] == 'No') {
                     (useCountStore.getState())
 
                 console.log(useCountStore.getState())                 
-                  router.push('/finish')
+                if(errorApi) {
+                  alert(`${errorApi}`);
+                }  else {
+                    router.push('/finish')
+                  }
                   appendSpreadsheet()
                   } else if(doYouFeelPainWhenCarryingOutTheseActivities[0] == 'Yes') {
                     setStep("pain-final")
@@ -897,7 +908,11 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                   (useCountStore.getState());
                   console.log(useCountStore.getState()) 
-                  router.push('/finish')
+                  if(errorApi) {
+                    alert(`${errorApi}`);
+                  }  else {
+                    router.push('/finish')
+                  }
                   appendSpreadsheet()}
                   } />
              </div>}
