@@ -160,9 +160,8 @@ export async function getServerSideProps({}) {
   });
   let error = ''
   const token = await auth.getAccessToken().catch(err => {
-    error = String(err.message)
+    error = String(err.message) 
   })
-  // console.log(token, 'token')
   
   return {
     props: {
