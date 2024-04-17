@@ -77,7 +77,7 @@ const GettingStarted = ({ token, error }: Props) => {
     } catch (e: any) {
       useCountStore.setState({ error: String(e.message) || '' })
       useCountStore.setState({ loading: false })
-      console.log(e, 'error loading')
+      // console.log(e, 'error loading')
     }
   };
 
