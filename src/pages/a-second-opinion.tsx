@@ -51,7 +51,6 @@ const RequestASecondOpinion = () => {
                 industry: '',
                 employeeSize: '',
                 fullName: '',
-                lastName: '',
                 role: '',
                 email: '',
                 date: '',

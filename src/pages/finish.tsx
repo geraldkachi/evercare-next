@@ -48,7 +48,6 @@ const Finish = () => {
                 industry: '',
                 employeeSize: '',
                 fullName: '',
-                lastName: '',
                 role: '',
                 email: '',
                 date: '',
