@@ -41,8 +41,8 @@ const GettingStarted = ({ token, error }: Props) => {
     currentMedications: useCountStore.getState().form.currentMedications,
     IfYesStateTheAllergies: useCountStore.getState().form.IfYesStateTheAllergies[0],
     othersBarriers: useCountStore.getState().form.othersBarriers,
-    whatTypeAndFrequency: useCountStore.getState().form.whatTypeAndFrequency[0],
-    painFelt: useCountStore.getState().form.painFelt[0],
+    whatTypeAndFrequency: useCountStore.getState().form.whatTypeAndFrequency,
+    painFelt: useCountStore.getState().form.painFelt,
     engageInRegularPhysicalActivity: useCountStore.getState().form.engageInRegularPhysicalActivity[0],
     whereIsThisPainFelt: useCountStore.getState().form.whereIsThisPainFelt[0],
     natureOfYourPhysicalActivity: useCountStore.getState().physicalActivity[0],
@@ -61,6 +61,13 @@ const GettingStarted = ({ token, error }: Props) => {
     barriersPreventingTreatmentPlan: useCountStore.getState().barriersPreventingTreatmentPlan[0],
     ifYesWhatAreTheseBarriers: useCountStore.getState().ifYesWhatAreTheseBarriers[0],
     membersOrCaregiversInvolvedInYourCare: useCountStore.getState().membersOrCaregiversInvolvedInYourCare[0],
+    carryingOutTheseActivities: useCountStore.getState().carryingOutTheseActivities[0],
+    natureOfThePain: useCountStore.getState().natureOfThePain[0],
+    natureOFYourMobility: useCountStore.getState().natureOFYourMobility[0],
+    experiencedAnySignificantChangesInYourFealthoRLifestyleRecently: useCountStore.getState().experiencedAnySignificantChangesInYourFealthoRLifestyleRecently[0],
+    doYouFeelPainWhenCarryingOutTheseActivities: useCountStore.getState().doYouFeelPainWhenCarryingOutTheseActivities[0],
+    whatIsTheNatureOfThePain: useCountStore.getState().whatIsTheNatureOfThePain[0],
+    whatIsTheNatureOfYourMobilityEnd: useCountStore.getState().whatIsTheNatureOfYourMobilityEnd[0],
   }
 
   const appendSpreadsheet = async () => {
