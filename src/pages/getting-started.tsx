@@ -79,7 +79,7 @@ const GettingStarted = ({ token, error }: Props) => {
       // await doc.updateProperties()
       await doc.updateProperties
       await doc._updateOrCreateSheet
-      doc.auth({ })
+      // doc.auth({ })
       // useServiceAccountAuth({
       //   private_key: NEXT_PUBLIC_PRIVATE_KEY,
       //   client_email: NEXT_PUBLIC_CLIENT_EMAIL
