@@ -24,6 +24,7 @@ const GettingStarted = ({ token, error }: Props) => {
   const count = useCountStore(state => state.count)
   // const error = useCountStore(state => state.error)
   const form = useCountStore(state => state.form)
+  const errorState = useCountStore(state => state.error)
   const chronicCondition = useCountStore.getState().chronicCondition
   const underliningcondition = useCountStore.getState().underliningcondition
   const dataOnject = {
@@ -79,13 +80,18 @@ const GettingStarted = ({ token, error }: Props) => {
       // await doc.updateProperties()
       await doc.updateProperties
       await doc._updateOrCreateSheet
+      
       // doc.auth({ })
       // useServiceAccountAuth({
       //   private_key: NEXT_PUBLIC_PRIVATE_KEY,
       //   client_email: NEXT_PUBLIC_CLIENT_EMAIL
       // });
+      const range = 'Sheet1!A1:AZ50'; // Specify your desired range here
+
       const result = await sheet.addRow(dataOnject);
+      // await sheet.
       console.log(dataOnject,'dataOnject')
+      console.log(result.a1Range,'result.a1Range')
 
       useCountStore.setState({ loading: false })
       return result;
@@ -174,7 +180,7 @@ export async function getServerSideProps({ }) {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
-      client_email: NEXT_PUBLIC_CLIENT_EMAIL
+      client_email: NEXT_PUBLIC_CLIENT_EMAIL,
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
@@ -185,10 +191,16 @@ export async function getServerSideProps({ }) {
     }
   })
 
+  const sheets = google.sheets({ version: 'v4', auth });
+
+
   let error = ''
   const token = await auth.getAccessToken().catch(err => {
     // console.log(err);
-    // error = String(err.message)
+    if (err instanceof Error) {
+      error = String(err.message)
+      useCountStore.setState({error: err.message})
+    }
   })
 
   return {
