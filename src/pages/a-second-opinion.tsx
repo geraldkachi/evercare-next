@@ -41,6 +41,7 @@ const RequestASecondOpinion = () => {
             doYouFeelPainWhenCarryingOutTheseActivities: [],
             whatIsTheNatureOfYourMobilityEnd: [],
             whatIsTheNatureOfThePain: [],
+
             form: {
                 address: '',
                 state: '',
@@ -53,7 +54,7 @@ const RequestASecondOpinion = () => {
                 date: '',
                 others: '',
                 phoneNumber: '',
-                gender: '', // 'male', 'female' or '' for unselected
+                gender: '',
                 othersHistor: '',
                 othersMedicalHistory: '',
                 contactInfoEmailnPhone: '',
@@ -64,7 +65,9 @@ const RequestASecondOpinion = () => {
                 painFelt: '',
                 engageInRegularPhysicalActivity: '',
                 whereIsThisPainFelt: '',
-            }
+            },
+            error: '',
+            loading: false,
         }, true);
         // window.location.reload()
     }, [])
@@ -89,7 +92,7 @@ const RequestASecondOpinion = () => {
                         useCountStore.setState({ count: 1 });
                         router.push('/getting-started')
                     }} />
-                     {/* @ts-ignore */}
+                    {/* @ts-ignore */}
                     <Button title="Request a second opinion" onClick={() => { router.push('/getting-started'); useCountStore.setState({ count: 1 }); }} />
                 </div>
             </div>

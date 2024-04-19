@@ -6,7 +6,7 @@ const Finish = () => {
     useEffect(() => {
         useCountStore.setState({})
         resetState
-        useCountStore.setState({count: 1})
+        useCountStore.setState({ count: 1 })
         useCountStore.setState({
             count: 1,
             // increment: () => set((state) => ({ count: state.count + 1 })),
@@ -41,6 +41,7 @@ const Finish = () => {
             doYouFeelPainWhenCarryingOutTheseActivities: [],
             whatIsTheNatureOfYourMobilityEnd: [],
             whatIsTheNatureOfThePain: [],
+
             form: {
                 address: '',
                 state: '',
@@ -53,7 +54,7 @@ const Finish = () => {
                 date: '',
                 others: '',
                 phoneNumber: '',
-                gender: '', // 'male', 'female' or '' for unselected
+                gender: '',
                 othersHistor: '',
                 othersMedicalHistory: '',
                 contactInfoEmailnPhone: '',
@@ -64,7 +65,9 @@ const Finish = () => {
                 painFelt: '',
                 engageInRegularPhysicalActivity: '',
                 whereIsThisPainFelt: '',
-            }
+            },
+            error: '',
+            loading: false,
         }, true);
         // window.location.reload()
     }, [])

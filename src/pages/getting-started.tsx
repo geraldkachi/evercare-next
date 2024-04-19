@@ -56,6 +56,11 @@ const GettingStarted = ({ token, error }: Props) => {
     nonChronicMedicalUnderliningcondition: underliningcondition.join(','),
     currentlyManagingAnyoFtheseConditions: useCountStore.getState().currentlyManagingAnyoFtheseConditions[0],
     historyOfAnyChronicDiseases: useCountStore.getState().historyOfAnyChronicDiseases[0],
+    nyKnownAllergicReactionsToTheseMedications: useCountStore.getState().nyKnownAllergicReactionsToTheseMedications[0],
+    adhereToTheseMedications: useCountStore.getState().adhereToTheseMedications[0],
+    barriersPreventingTreatmentPlan: useCountStore.getState().barriersPreventingTreatmentPlan[0],
+    ifYesWhatAreTheseBarriers: useCountStore.getState().ifYesWhatAreTheseBarriers[0],
+    membersOrCaregiversInvolvedInYourCare: useCountStore.getState().membersOrCaregiversInvolvedInYourCare[0],
   }
 
   const appendSpreadsheet = async () => {
