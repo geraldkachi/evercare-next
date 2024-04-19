@@ -7,8 +7,6 @@ const RequestASecondOpinion = () => {
     const router = useRouter();
     const { resetState } = useCountStore();
     useEffect(() => {
-        useCountStore.setState({})
-        resetState
         useCountStore.setState({
             count: 1,
 

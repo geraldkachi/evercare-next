@@ -39,9 +39,12 @@
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance: none;
+    -webkit-min-logical-width: calc(100% - 16px);
     /* Add your custom styling here */
 
      /* Hide arrow */
+
+
   &::-webkit-inner-spin-button,
   &::-webkit-calendar-picker-indicator {
     /* display: none; */
@@ -61,16 +64,6 @@
   }
   }
 
-  /* input[type="date"]::-webkit-calendar-picker-indicator {
-    background: white !important;
-    bottom: 0;
-    color: #001027 !important;
-    cursor: pointer;
-    height: auto;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: auto;
-    border: 1px solid #0D1227;
-  } */
+  input[type='date'], input[type='time'] {
+    -webkit-appearance: none;
+}
