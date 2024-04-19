@@ -276,7 +276,6 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
                 onChange={handleDate}
                 name="date"
                 placeholder="DD/MM/YY"
-                // trailingIcon={() => <img className="pr-3" src="dateinput.svg" />}
               />
 
               <div className="flex flex-col">
@@ -298,7 +297,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
               onChange={handlePhoneNumber}
               name="phoneNumber"
               placeholder="  +234 | Your number goes here"
-              leadingIcon={() => <img className="pl-3" src="nigeria-flag.svg" />}
+              leadingicon={<img className="pl-3" src="nigeria-flag.svg" />}
             // helptext={error}
             />
 

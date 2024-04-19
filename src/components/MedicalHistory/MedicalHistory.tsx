@@ -307,8 +307,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                         alert(`${"Something went wrong "}`);
                       }  else {
                         router.push('/finish')
+                        appendSpreadsheet()
                       }
-                      appendSpreadsheet()
                     }
                   }} />
               </div>}
@@ -671,8 +671,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                       alert('Something Wrong Error occurred');
                     }  else {
                         router.push('/finish')
+                        appendSpreadsheet()
                       }
-                      appendSpreadsheet()
                    }
                  }} />
              </div>}
@@ -808,8 +808,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   alert('Something Went Wrong');
                 }  else {
                     router.push('/finish')
+                    appendSpreadsheet()
                   }
-                  appendSpreadsheet()
                   } else if(doYouFeelPainWhenCarryingOutTheseActivities[0] == 'Yes') {
                     setStep("pain-final")
                   }
@@ -912,8 +912,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                     alert('Something Wrong Error occurred');
                   }  else {
                     router.push('/finish')
+                    appendSpreadsheet()}
                   }
-                  appendSpreadsheet()}
                   } />
              </div>}
            </div>

@@ -5,8 +5,8 @@ type Props = {
 	tooltip?: string;
 	helptext?: string;
 	inputClassName?: string;
-	leadingIcon?: () => JSX.Element
-	trailingIcon?: () => JSX.Element
+	leadingicon?: JSX.Element
+	trailingicon?: JSX.Element
 	// innerRef?: any;
 	inputType?: 'default' | 'success' | 'warning' | 'error';
 	inputClass?: string;
@@ -30,8 +30,8 @@ export default function Input(
 		helptext,
 		// innerRef,
 		className,
-		leadingIcon,
-		trailingIcon,
+		leadingicon,
+		trailingicon,
 		inputClassName,
 		inputType = 'default'
 	} = props;
@@ -76,20 +76,20 @@ export default function Input(
                 ${(disabled || readOnly) && 'bg-grey border-none'
 					}`}
 			>
-				{leadingIcon && (
+				{leadingicon && (
 					<span className="ml-2 absolute ">
-						{leadingIcon()}
+						{leadingicon}
 					</span>
 				)}
 				<input
 					{...props}
-					className={`${leadingIcon && 'ps-10'} ${!label && 'md:mt-6' }  ${trailingIcon && 'pe-5 me-0'}
+					className={`${leadingicon && 'ps-10'} ${!label && 'md:mt-6' }  ${trailingicon && 'pe-5 me-0'}
 					border-${col()}
 					border w-full px-2 py-3 rounded-[4px] focus:outline-[#] focus:outline-none focus:bg-white dark:focus:text-black focus:border-[#1D8EE6] placeholder:text-xs placeholder:font-normal placeholder:text-[#ABABAB] placeholder:leading-6 ${inputClassName}`}
 				/>
-				{trailingIcon && (
+				{trailingicon && (
 					<span className="absolute inset-y-0 end-0 flex items-center justify-center cursor-pointer">
-						{trailingIcon()}
+						{trailingicon}
 					</span>
 				)}
 			</div>
