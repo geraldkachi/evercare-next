@@ -38,7 +38,7 @@ const GettingStarted = ({ token, error }: Props) => {
     othersHistory: useCountStore.getState().form.othersHistor,
     othersMedicalHistory: useCountStore.getState().form.othersMedicalHistory[0],
     contactInfoEmailnPhone: useCountStore.getState().form.contactInfoEmailnPhone,
-    currentMedications: useCountStore.getState().form.currentMedications[0],
+    currentMedications: useCountStore.getState().form.currentMedications,
     IfYesStateTheAllergies: useCountStore.getState().form.IfYesStateTheAllergies[0],
     othersBarriers: useCountStore.getState().form.othersBarriers,
     whatTypeAndFrequency: useCountStore.getState().form.whatTypeAndFrequency[0],
