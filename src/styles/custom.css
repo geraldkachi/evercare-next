@@ -1,49 +1,54 @@
 .step-item {
-    @apply relative flex flex-col justify-center items-center;
-  }
-  
-  .step-item:not(:first-child)::before {
-      @apply content-[''] bg-[#002355] absolute w-1/4 h-[2px] -top-1/4 -translate-y-1/2 rotate-90;
-  }
-  
-  .step {
-    @apply w-[50px] py-2 flex items-center justify-center z-10  relative font-semibold text-[#002355];
-  }
-  
-  .active .step {
-    @apply bg-white text-[#001027];
-  }
-  
-  .btn {
-    @apply bg-gray-800 hover:bg-gray-700 text-gray-100 font-medium px-7 py-1;
-  }
-  
-  .complete .step {
-      @apply bg-white text-[#001027];
-  }
-  
-  .complete p {
-      @apply text-[#444444];
-  }
-  .complete:not(:first-child)::before,
-  .active:not(:first-child)::before {
-      @apply bg-[#002355] text-[#001027];
-  }
+  @apply relative flex flex-col justify-center items-center;
+}
 
-  /* input[type="date"] {
+.step-item:not(:first-child)::before {
+  @apply content-[''] bg-[#002355] absolute w-1/4 h-[2px] -top-1/4 -translate-y-1/2 rotate-90;
+}
+
+.step {
+  @apply w-[50px] py-2 flex items-center justify-center z-10  relative font-semibold text-[#002355];
+}
+
+.active .step {
+  @apply bg-white text-[#001027];
+}
+
+.btn {
+  @apply bg-gray-800 hover:bg-gray-700 text-gray-100 font-medium px-7 py-1;
+}
+
+.complete .step {
+  @apply bg-white text-[#001027];
+}
+
+.complete p {
+  @apply text-[#444444];
+}
+.complete:not(:first-child)::before,
+.active:not(:first-child)::before {
+  @apply bg-[#002355] text-[#001027];
+}
+
+/* input[type="date"] {
     -webkit-appearance: none;
     appearance: none;
     /* Add your custom styling here */
-  /* } */
-  input[type="date"] {
-    -webkit-appearance: none;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-min-logical-width: calc(100% - 16px);
-    /* Add your custom styling here */
+/* } */
+input[type="date"] {
+  -webkit-appearance: none;
+  /* appearance: none; */
+  -moz-appearance: none;
+  -webkit-min-logical-width: calc(100% - 16px);
+  /* position: absolute; */
+  /* Add your custom styling here */
 
-     /* Hide arrow */
+  /* Hide arrow */
+  background: white url("/dateinput.svg");
+  background-repeat: no-repeat;
 
+  translfore: translate(50%, 50%);
+  background-position: 96%;
 
   &::-webkit-inner-spin-button,
   &::-webkit-calendar-picker-indicator {
@@ -55,15 +60,12 @@
     color: transparent !important;
     cursor: pointer;
     height: auto;
-    left: 0;
     position: absolute;
+    left: 0;
     right: 0;
     top: 0;
+
     width: auto;
     border: 1px solid #424242;
   }
-  }
-
-  input[type='date'], input[type='time'] {
-    -webkit-appearance: none;
 }
