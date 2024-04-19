@@ -20,7 +20,7 @@ const Home: React.FC<DashboardProps> = () => {
               Welcome to Evercare selfcare diagnosis
             </div>
 
-            <div className="text-center text-lg font-normal leading-6 my-4">
+            <div className="text-center text-base md:text-lg font-normal leading-6 my-4">
               Welcome to Evercare's Selfcare Diagnosis Form—an easy way to
               prioritize your health. Your proactive step towards understanding
               your needs is commendable. Let's embark on this wellness journey

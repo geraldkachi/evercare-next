@@ -55,6 +55,7 @@ const GettingStarted = ({ token, error }: Props) => {
     previousSurgeriesorHospitalizations: useCountStore.getState().previousSurgeriesorHospitalizations[0],
     nonChronicMedicalUnderliningcondition: underliningcondition.join(','),
     currentlyManagingAnyoFtheseConditions: useCountStore.getState().currentlyManagingAnyoFtheseConditions[0],
+    historyOfAnyChronicDiseases: useCountStore.getState().historyOfAnyChronicDiseases[0],
   }
 
   const appendSpreadsheet = async () => {
