@@ -152,7 +152,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
               <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">Do you have any non-chronic medical underlining <br /> condition in the past or recently?</div>
             </div>
             <div className="flex flex-col">
-              <div className="md:flex items-start flex-1 gap-2 w-full md:pr-32">
+              <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
                 <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
                 <div onClick={() => { setYesOpt('no'); useCountStore.setState({ underliningcondition: [] }); useCountStore.setState({ currentlyManagingAnyoFtheseConditions: [] }); }} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I don’t</div>
               </div>
