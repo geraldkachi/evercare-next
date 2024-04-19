@@ -30,16 +30,26 @@
       @apply bg-[#002355] text-[#001027];
   }
 
-  input[type="date"] {
+  /* input[type="date"] {
     -webkit-appearance: none;
     appearance: none;
     /* Add your custom styling here */
-  }
+  /* } */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    /* Add your custom styling here */
 
-  input[type="date"]::-webkit-calendar-picker-indicator {
+     /* Hide arrow */
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    /* display: none; */
+    -webkit-appearance: none;
+
     background: transparent !important;
     bottom: 0;
-    color: transparent;
+    color: transparent !important;
     cursor: pointer;
     height: auto;
     left: 0;
@@ -47,5 +57,20 @@
     right: 0;
     top: 0;
     width: auto;
-    border: 1px solid #0D1227 !important;
+    border: 1px solid #0D1227;
   }
+  }
+
+  /* input[type="date"]::-webkit-calendar-picker-indicator {
+    background: white !important;
+    bottom: 0;
+    color: #001027 !important;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    border: 1px solid #0D1227;
+  } */

@@ -9,11 +9,8 @@ const HealthCheckups = () => {
 const { count, visitDoctor, bloodSugarPressure, recentLabTests, previousSurgeriesorHospitalizations, form } = useCountStore()
 const others = useCountStore((state) => state.form.othersHistor);
 
-// console.log(visitDoctor, 'visitDoctor')
-// console.log(bloodSugarPressure, 'bloodSugarPressure')
-// console.log(recentLabTests, 'recentLabTests')
-// console.log(previousSurgeriesorHospitalizations, 'previousSurgeriesorHospitalizations')
-const disabledProps = !visitDoctor.length || !bloodSugarPressure.length || !recentLabTests.length || !previousSurgeriesorHospitalizations.length
+// const disabledProps = !visitDoctor.length || !bloodSugarPressure.length || !recentLabTests.length || !previousSurgeriesorHospitalizations.length
+const disabledProps = !visitDoctor.length || !bloodSugarPressure.length  || !previousSurgeriesorHospitalizations.length
 const [error, setError] = useState('');
 
 const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -144,7 +141,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
 
           {/* section four */}
           <div className="flex items-center gap-2">
-            <div className="text-lg leading-7 font-bold my-2">Do you smoke or use tobacco products?</div>
+            <div className="text-lg leading-7 font-bold my-2">Have you had any Previous Surgeries or Hospitalizations?</div>
           </div>
           <div className="flex items-center flex-wrap gap-2 mb-4">
             {PreviousSurgeriesorHospitalizationsData.map(({value}) => {
