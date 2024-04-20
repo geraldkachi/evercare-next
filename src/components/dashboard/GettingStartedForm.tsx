@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 
 
 type Field = {
-  fullName?: string,
+  firstName?: string,
   email?: string,
   phoneNumber?: string
 }
@@ -33,7 +33,7 @@ const schema = yup.object().shape({
   //     then: yup.string().max(14, 'Phone number must be 14 digits long').required('Phone number is required'),
   //     otherwise: yup.string().max(11, 'Phone number must be 11 digits long').required('Phone number is required'),
   //   }),
-  fullName: yup.string().required('FullName is required').min(3, 'Full Name must be at least 3 characters'),
+  firstName: yup.string().required('First Name is required').min(3, 'Full Name must be at least 3 characters'),
   email: yup.string().email('Invalid email address').required('Email is required'),
 })
 
@@ -43,7 +43,8 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
   const [step, setStep] = useState('')
   const form = useCountStore((state) => state.form);
   const { count, chronicCondition } = useCountStore()
-  const fullName = useCountStore((state) => state.form.fullName);
+  const firstName = useCountStore((state) => state.form.firstName);
+  const lastName = useCountStore((state) => state.form.lastName);
   const email = useCountStore((state) => state.form.email);
   const date = useCountStore((state) => state.form.date);
   const address = useCountStore((state) => state.form.address);
@@ -54,14 +55,24 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
   const [yesOpt, setYesOpt] = useState('')
   const [error, setErrorVal] = useState<Field>({});
 
-  const displayBtn = !phoneNumber || !fullName || !email || !gender || !address || !date;
+  const displayBtn = !phoneNumber || !firstName || !firstName ||!email || !gender || !date;
 
-  const handleFull = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // await schema.validate({ fullName });
+  const handleFirst = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    // await schema.validate({ firstName });
     useCountStore.setState({
       form: {
         ...form,
-        fullName: String(e.target.value),
+        firstName: String(e.target.value),
+      },
+    });
+  };
+
+  const handleLast = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    // await schema.validate({ firstName });
+    useCountStore.setState({
+      form: {
+        ...form,
+        lastName: String(e.target.value),
       },
     });
   };
@@ -74,7 +85,6 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
         email: String(e.target.value),
       },
     });
-
   };
 
 
@@ -116,7 +126,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
 
   const handleSubmit = async () => {
     // e.preventDefault();
-    schema.validate({ phoneNumber, email, fullName }, { abortEarly: false })
+    schema.validate({ phoneNumber, email, firstName }, { abortEarly: false })
       .then((isValid) => {
         if (isValid) {
           setStep('lief')
@@ -152,8 +162,8 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
           <div className="flex flex-col">
 
             <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
-              <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
+              <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
+              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
             </div>
 
             {yesOpt == 'yes' && (
@@ -198,7 +208,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
                         //     }
                         //     return spr
                         //   })}
-                        className={`${chronicCondition?.includes(value) && '!border !border-purple-600 text-purple-600'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                        className={`${chronicCondition?.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                     )
                   }
                   )}
@@ -249,21 +259,21 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
               <Input
                 label="What’s your name?"
                 className="mb-1"
-                value={fullName}
+                value={firstName}
                 type="text"
-                onChange={handleFull}
-                name="fullName"
-                placeholder="Full Name"
+                onChange={handleFirst}
+                name="firstName"
+                placeholder="First Name"
                 helptext=''
               />
               <Input
-                label="Email Address"
-                value={email}
+                // label="Email "
+                value={lastName}
                 className="mb-1"
-                type="email"
-                onChange={handleEmail}
-                name="email"
-                placeholder="Email Address"
+                type="text"
+                onChange={handleLast}
+                name="lastName"
+                placeholder="Last Name"
               />
             </div>
 
@@ -283,11 +293,22 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
                   {"What’s your gender?"}</label>
 
                 <div className="flex items-start flex-1 gap-2 w-full">
-                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "male" } })} className={`${gender == 'male' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>Male</div>
-                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "female" } })} className={`${gender == 'female' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>Female</div>
+                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "male" } })} className={`${gender == 'male' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'male' && <img src='check.svg' className='mr-1' />} Male</div>
+                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "female" } })} className={`${gender == 'female' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'female' && <img src='check.svg' className='mr-1' />} Female</div>
                 </div>
               </div>
             </div>
+
+            <div className="grid md:grid-cols-2 gap-3">
+            <Input
+                label="Email Address"
+                value={email}
+                className="mb-1"
+                type="email"
+                onChange={handleEmail}
+                name="email"
+                placeholder="Email Address"
+              />
 
             <Input
               label="What’s your phone number?"
@@ -298,15 +319,16 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
               name="phoneNumber"
               placeholder="  +234 | Your number goes here"
               leadingicon={<img className="pl-3" src="nigeria-flag.svg" />}
-            // helptext={error}
-            />
+              // helptext={error}
+              />
+              </div>
 
             <div>
               <label className="my-1 text-[#0D1227] leading-[19.6px] flex items-center text-left text-xs md:text-sm font-">Enter your address here (Optional)</label>
               <textarea value={address} onChange={handleAddress} rows={5} className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-[4px] border border-[#424242] focus:bg-white focus:border focus:outline-none focus:border-[#1D8EE6] placeholder:text-[#ABABAB] placeholder:leading-6" placeholder="Write your thoughts here..."></textarea>
             </div>
             {error && <div className="text-red-600 my-4 text-center text-xs">{error.phoneNumber}</div>}
-            {error && <div className="text-red-600 my-4 text-center text-xs">{error.fullName}</div>}
+            {error && <div className="text-red-600 my-4 text-center text-xs">{error.firstName}</div>}
             {error && <div className="text-red-600 my-4 text-center text-xs">{error.email}</div>}
             {/* @ts-ignore */}
             <Button title="Continue" disabled={displayBtn} className="mt-5 te w-full sm:w-[unset]" onClick={() => { handleSubmit() }} />

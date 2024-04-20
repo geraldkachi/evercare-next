@@ -46,7 +46,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
               return (
                 <div key={value} 
                 onClick={RBoxgrouplogic}
-                className={`${dietaryPreference.includes(value) && '!border !border-purple-600 text-purple-600' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${dietaryPreference.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -76,7 +76,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${physicalActivity.includes(value) && '!border !border-purple-600 text-purple-600' } whitespace-nowr cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${physicalActivity.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowr cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -106,7 +106,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${sleepPatterns.includes(value) && '!border !border-purple-600 text-purple-600' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${sleepPatterns.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -136,7 +136,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${tobaccoProducts.includes(value) && '!border !border-purple-600 text-purple-600' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${tobaccoProducts.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>

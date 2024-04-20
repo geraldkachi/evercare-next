@@ -28,7 +28,8 @@ const GettingStarted = ({ token, error }: Props) => {
   const chronicCondition = useCountStore.getState().chronicCondition
   const underliningcondition = useCountStore.getState().underliningcondition
   const dataOnject = {
-    fullName: useCountStore.getState().form.fullName,
+    firstName: useCountStore.getState().form.firstName,
+    lastName: useCountStore.getState().form.lastName,
     email: useCountStore.getState().form.email,
     phoneNumber: useCountStore.getState().form.phoneNumber,
     date: useCountStore.getState().form.date,

@@ -5,7 +5,7 @@
 
 @layer components {
   body{
-    @apply select-none;
+    @apply select-none bg-[#FFFCF9];
   }
   .bg{
     background-color: var(--ion-background-color);

@@ -12,7 +12,7 @@ const Home: React.FC<DashboardProps> = () => {
       {loading ? <div className="h-screen flex flex-col items-center justify-center mx-auto text-center">Loading ...</div> : (
 
         <div className="h-screen flex flex-col items-center justify-center mx-auto">
-          <img src="logo.svg" alt="logo" className="w-44 h-20" />
+          <img src="logo.svg" alt="logo" className="w-56 h-28" />
 
           <div className="max-w-[622px] bg-white mx-auto p-3 sm:p-12 flex flex-col items-center justify-center">
             <img src="Sun and cloud.svg" alt="sun" />
@@ -37,7 +37,7 @@ const Home: React.FC<DashboardProps> = () => {
             <button onClick={() => {
               setLoading(true);
               router.push('/getting-started')
-            }} className="rounded-lg bg-[#002355] text-white py-2 px-4 md:px-10 text-center text-base font-normal leading-6 my-5" type="button">Let&apos;s get started</button>
+            }} className="rounded-lg bg-[#002355] text-white py-2 px-4 md:px-14 text-center text-base font-normal leading-6 my-5" type="button">Let&apos;s get started</button>
           </div>
         </div>
       )}

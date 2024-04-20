@@ -1,8 +1,10 @@
 import { useEffect } from "react"
 import useCountStore from "@/store/store"
+import { useRouter } from 'next/router'
 
 const Finish = () => {
     const { resetState } = useCountStore();
+    const router = useRouter()
     useEffect(() => {
         useCountStore.setState({})
         resetState
@@ -48,7 +50,8 @@ const Finish = () => {
                 country: '',
                 industry: '',
                 employeeSize: '',
-                fullName: '',
+                firstName: '',
+                lastName: '',
                 role: '',
                 email: '',
                 date: '',
@@ -81,7 +84,7 @@ const Finish = () => {
                 <img src="doctor2.svg" alt="doctor" className="h-64 mb-6" />
 
                 <div className="flex text-2xl text-[#002355] leading-6 font-bold text-center mb-2">Thank you for taking out time to answer this questions.</div>
-                <div className="text-sm text-[#444444] leading-6 my-2 text-center">You deserve the best care. Don’t hesitate to get in touch. You deserve the best care.</div>
+                <div className="text-sm text-[#444444] leading-6 my-2 text-center">You deserve the best care. Don’t hesitate to get in touch. <p className="underline cursor-pointer" onClick={() => router.push('mailto:callcenter@evercare.ng')}>(callcenter@evercare.ng)</p></div>
             </div>
         </div>
     )
