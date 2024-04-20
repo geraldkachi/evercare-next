@@ -162,8 +162,8 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
           <div className="flex flex-col">
 
             <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
-              <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
+              <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
+              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
             </div>
 
             {yesOpt == 'yes' && (
@@ -208,7 +208,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
                         //     }
                         //     return spr
                         //   })}
-                        className={`${chronicCondition?.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
+                        className={`${chronicCondition?.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                     )
                   }
                   )}
@@ -293,8 +293,8 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
                   {"What’s your gender?"}</label>
 
                 <div className="flex items-start flex-1 gap-2 w-full">
-                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "male" } })} className={`${gender == 'male' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'male' && <img src='check.svg' className='mr-1' />} Male</div>
-                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "female" } })} className={`${gender == 'female' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'female' && <img src='check.svg' className='mr-1' />} Female</div>
+                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "male" } })} className={`${gender == 'male' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'male' && <img src='check.svg' className='mr-1' />} Male</div>
+                  <div onClick={() => useCountStore.setState({ form: { ...form, gender: "female" } })} className={`${gender == 'female' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-sm font-normal leading-6 px-6 py-3 w-full text-center bg-white`}>{gender === 'female' && <img src='check.svg' className='mr-1' />} Female</div>
                 </div>
               </div>
             </div>

@@ -60,7 +60,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
               return (
                 <div key={value} 
                 onClick={RBoxgrouplogic}
-                className={`${visitDoctor.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${visitDoctor.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]' }  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -90,7 +90,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${bloodSugarPressure.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${bloodSugarPressure.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -122,7 +122,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${recentLabTests.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${recentLabTests.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>
@@ -164,7 +164,7 @@ const handleOthers = (e: React.ChangeEvent<HTMLInputElement>) => {
               };
               return (
                 <div key={value} onClick={RBoxgrouplogic}
-                className={`${previousSurgeriesorHospitalizations.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                className={`${previousSurgeriesorHospitalizations.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]' } whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
               )
             })}
           </div>

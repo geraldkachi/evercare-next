@@ -153,8 +153,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
             </div>
             <div className="flex flex-col">
               <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
-                <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-                <div onClick={() => { setYesOpt('no'); useCountStore.setState({ underliningcondition: [] }); useCountStore.setState({ currentlyManagingAnyoFtheseConditions: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
+                <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
+                <div onClick={() => { setYesOpt('no'); useCountStore.setState({ underliningcondition: [] }); useCountStore.setState({ currentlyManagingAnyoFtheseConditions: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
               </div>
 
               {yesOpt == 'yes' && (
@@ -187,7 +187,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                       };
 
                       return (
-                        <div key={value} onClick={RBoxgrouplogic} className={`${underliningcondition.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
+                        <div key={value} onClick={RBoxgrouplogic} className={`${underliningcondition.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                       )
                     }
                     )}
@@ -229,7 +229,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                       };
                       return (
                         <div key={value} onClick={RBoxgrouplogic}
-                          className={`${currentlyManagingAnyoFtheseConditions.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                          className={`${currentlyManagingAnyoFtheseConditions.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} whitespace-nowrap cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                       )
                     })}
                   </div>
@@ -267,7 +267,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                       };
 
                       return (
-                        <div key={value} onClick={RBoxgrouplogic} className={`${underliningcondition.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                        <div key={value} onClick={RBoxgrouplogic} className={`${underliningcondition.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                       )
                     }
                     )}
@@ -354,7 +354,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${nyKnownAllergicReactionsToTheseMedications.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${nyKnownAllergicReactionsToTheseMedications.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )
                 }
                 )}
@@ -398,7 +398,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${adhereToTheseMedications.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${adhereToTheseMedications.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                   )
                 }
                 )}
@@ -446,7 +446,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${barriersPreventingTreatmentPlan.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${barriersPreventingTreatmentPlan.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -477,7 +477,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${ifYesWhatAreTheseBarriers.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${ifYesWhatAreTheseBarriers.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -517,7 +517,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${membersOrCaregiversInvolvedInYourCare.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${membersOrCaregiversInvolvedInYourCare.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -532,7 +532,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                     if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
                       setStep('after-medication')
                     }
-                  }} />
+                  }} /> 
               </div>}
             </div>
           </div>
@@ -580,7 +580,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  };
 
                  return (
-                   <div key={value} onClick={RBoxgrouplogic} className={`${carryingOutTheseActivities.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                   <div key={value} onClick={RBoxgrouplogic} className={`${carryingOutTheseActivities.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                  )
                }
                )}
@@ -610,7 +610,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  };
 
                  return (
-                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOfThePain.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOfThePain.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                  )
                }
                )}
@@ -654,7 +654,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  };
 
                  return (
-                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOFYourMobility.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                   <div key={value} onClick={RBoxgrouplogic} className={`${natureOFYourMobility.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                  )
                }
                )}
@@ -711,7 +711,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                 };
 
                 return (
-                  <div key={value} onClick={RBoxgrouplogic} className={`${historyOfAnyChronicDiseases.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                  <div key={value} onClick={RBoxgrouplogic} className={`${historyOfAnyChronicDiseases.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                 )
               }
               )}
@@ -744,7 +744,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                 };
 
                 return (
-                  <div key={value} onClick={RBoxgrouplogic} className={`${experiencedAnySignificantChangesInYourFealthoRLifestyleRecently.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                  <div key={value} onClick={RBoxgrouplogic} className={`${experiencedAnySignificantChangesInYourFealthoRLifestyleRecently.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                 )
               }
               )}
@@ -789,7 +789,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                 };
 
                 return (
-                  <div key={value} onClick={RBoxgrouplogic} className={`${doYouFeelPainWhenCarryingOutTheseActivities.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                  <div key={value} onClick={RBoxgrouplogic} className={`${doYouFeelPainWhenCarryingOutTheseActivities.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                 )
               }
               )}
@@ -850,7 +850,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  };
  
                  return (
-                   <div key={value} onClick={RBoxgrouplogic} className={`${whatIsTheNatureOfThePain.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                   <div key={value} onClick={RBoxgrouplogic} className={`${whatIsTheNatureOfThePain.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                  )
                }
                )}
@@ -895,7 +895,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                  };
  
                  return (
-                   <div key={value} onClick={RBoxgrouplogic} className={`${whatIsTheNatureOfYourMobilityEnd.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                   <div key={value} onClick={RBoxgrouplogic} className={`${whatIsTheNatureOfYourMobilityEnd.includes(value) && '!bg-[#F0E4FF] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
                  )
                }
                )}
