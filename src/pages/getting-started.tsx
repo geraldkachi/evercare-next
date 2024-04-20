@@ -184,12 +184,12 @@ export async function getServerSideProps({ }) {
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
-  console.log({
-    credentials: {
-      private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
-      client_email: NEXT_PUBLIC_CLIENT_EMAIL
-    }
-  })
+  // console.log({
+  //   credentials: {
+  //     private_key: `${NEXT_PUBLIC_PRIVATE_KEY}`.replace(/\\n/gm, "\n"),
+  //     client_email: NEXT_PUBLIC_CLIENT_EMAIL
+  //   }
+  // })
 
   const sheets = google.sheets({ version: 'v4', auth });
 
