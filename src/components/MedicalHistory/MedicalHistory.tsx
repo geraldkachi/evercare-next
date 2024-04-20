@@ -431,7 +431,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   const index = barriersPreventingTreatmentPlan.indexOf(value);
                   const isSelected = index !== -1;
 
-                  const radio = true;
+                  const radio = false;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
                       useCountStore.setState({ barriersPreventingTreatmentPlan: [value] });
@@ -446,7 +446,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${barriersPreventingTreatmentPlan.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${barriersPreventingTreatmentPlan.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -462,7 +462,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   const index = ifYesWhatAreTheseBarriers.indexOf(value);
                   const isSelected = index !== -1;
 
-                  const radio = true;
+                  const radio = false;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
                       useCountStore.setState({ ifYesWhatAreTheseBarriers: [value] });
@@ -477,7 +477,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${ifYesWhatAreTheseBarriers.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${ifYesWhatAreTheseBarriers.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -502,7 +502,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   const index = membersOrCaregiversInvolvedInYourCare.indexOf(value);
                   const isSelected = index !== -1;
 
-                  const radio = true;
+                  const radio = false;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
                       useCountStore.setState({ membersOrCaregiversInvolvedInYourCare: [value] });
@@ -517,7 +517,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   };
 
                   return (
-                    <div key={value} onClick={RBoxgrouplogic} className={`${membersOrCaregiversInvolvedInYourCare.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'}  cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}</div>
+                    <div key={value} onClick={RBoxgrouplogic} className={`${membersOrCaregiversInvolvedInYourCare.includes(value) && '!bg-[#F9F6FE] !border !border-[#9164CD]'} flex items-center cursor-pointer border border-[#1c1c1c] text-xs px-4 py-2 rounded-3xl max-w`}>{value}{" "} {isSelected && <img src='cancel.svg' className='pl-1' />}</div>
                   )
                 }
                 )}
@@ -526,7 +526,8 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
               {yesOpt && <div>
                 {/* @ts-ignore */}
                 <Button title={`${yesOpt == 'no' ? 'Finish' : 'Next'}`}
-                  disabled={!barriersPreventingTreatmentPlan.length || !ifYesWhatAreTheseBarriers.length || !membersOrCaregiversInvolvedInYourCare.length}
+                  // disabled={!barriersPreventingTreatmentPlan.length || !ifYesWhatAreTheseBarriers.length || !membersOrCaregiversInvolvedInYourCare.length}
+                  disabled={!barriersPreventingTreatmentPlan.length || !membersOrCaregiversInvolvedInYourCare.length}
                   className="mb-20 mt-10 te w-full sm:w-[unset]" onClick={() => {
                     if (yesOpt == 'yes' && currentlyManagingAnyoFtheseConditions[0] == 'Yes') {
                       setStep('after-medication')
