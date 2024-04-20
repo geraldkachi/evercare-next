@@ -36,7 +36,7 @@ export const physicalActivityData = [
     { value: "Intense exercise (e.g., weightlifting, high-intensity interval training)", label: "Intense exercise (e.g., weightlifting, high-intensity interval training)" },
 ];
 export const sleepPatternsData = [
-    { value: "Less than 6 hours a night", label: "Less than 6 hours a night" },
+    { value: "Less than 6 hours per night", label: "Less than 6 hours per night" },
     { value: "6-8 hours per night", label: "6-8 hours per night" },
     { value: "More than 8 hours per night", label: "More than 8 hours per night" },
     { value: "Irregular or disrupted sleep", label: "Irregular or disrupted sleep" },

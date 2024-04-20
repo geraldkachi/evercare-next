@@ -53,7 +53,7 @@ const disabledProps = !dietaryPreference.length || !physicalActivity.length || !
 
           {/* section two */}
           <div className="flex items-center gap-2">
-            <div className="text-lg leading-7 font-bold my-2">What is the nature of your Physical Activity?</div>
+            <div className="text-lg leading-7 font-bold my-2">What is the nature of your physical activity?</div>
           </div>
           <div className="flex items-center flex-wrap gap-2 mb-4">
             {physicalActivityData.map(({value}) => {

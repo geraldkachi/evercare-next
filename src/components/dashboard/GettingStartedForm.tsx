@@ -153,7 +153,7 @@ const GettingStartedForm = ({ appendSpreadsheet }: any): JSX.Element => {
 
             <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
               <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I don’t</div>
+              <div onClick={() => { setYesOpt('no'); useCountStore.setState({ chronicCondition: [] }); }} className={`${yesOpt == 'no' && 'bg-purple-100 border border-purple-600'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
             </div>
 
             {yesOpt == 'yes' && (
