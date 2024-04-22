@@ -149,12 +149,12 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
 
 
             <div className="break-all mb-10">
-              <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">Do you have any non-chronic medical underlining <br /> condition in the past or recently?</div>
+              <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">Do you have any non-chronic medical underlying <br /> condition in the past or recently?</div>
             </div>
             <div className="flex flex-col">
               <div className="grid grid-cols-2 md:flex items-start flex-1 gap-2 w-full md:pr-32">
-                <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes, I am / I have</div>
-                <div onClick={() => { setYesOpt('no'); useCountStore.setState({ underliningcondition: [] }); useCountStore.setState({ currentlyManagingAnyoFtheseConditions: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I’m not / I have not</div>
+                <div onClick={() => setYesOpt('yes')} className={`${yesOpt == 'yes' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>Yes I have</div>
+                <div onClick={() => { setYesOpt('no'); useCountStore.setState({ underliningcondition: [] }); useCountStore.setState({ currentlyManagingAnyoFtheseConditions: [] }); }} className={`${yesOpt == 'no' && '!bg-[#F0E4FF] !border !border-[#9164CD]'} flex items-center justify-center border cursor-pointer border-[#424242] rounded-[4px] text-xs md:text-sm font-normal leading-6 px-2 md:px-4 py-6 w-full text-center bg-white`}>No, I have not</div>
               </div>
 
               {yesOpt == 'yes' && (
@@ -162,7 +162,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   {/* <div className="my-5" /> */}
                   <hr className="border my-8 border-black " />
                   <div className="break-all mb-10">
-                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">What non-chronic medical underliningcondition(s) are your managing?</div>
+                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">What non-chronic medical underlying condition(s) are your managing?</div>
                     <div className="text-lg md:text-lg text-[#1C1C1C] italic mb-2">(select all that apply) </div>
                   </div>
 
@@ -243,7 +243,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   {/* <div className="my-5" /> */}
                   <hr className="border my-8 border-black " />
                   <div className="break-all mb-0">
-                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">Do you have/know anyone that has a medical underlining condition <br /> to refer to us?</div>
+                    <div className="text-lg md:text-lg font-semibold text-[#1C1C1C] mb-2">Do you have/know anyone that has a medical underlying condition <br /> to refer to us?</div>
                   </div>
 
                   <div className="flex flex-wrap gap-2 max-w-fit">
