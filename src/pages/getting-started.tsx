@@ -27,6 +27,7 @@ const GettingStarted = ({ token, error }: Props) => {
   const errorState = useCountStore(state => state.error)
   const chronicCondition = useCountStore.getState().chronicCondition
   const underliningcondition = useCountStore.getState().underliningcondition
+  const ifYesWhatAreTheseBarriers = useCountStore.getState().ifYesWhatAreTheseBarriers
   const dataOnject = {
     firstName: useCountStore.getState().form.firstName,
     lastName: useCountStore.getState().form.lastName,
@@ -61,7 +62,7 @@ const GettingStarted = ({ token, error }: Props) => {
     nyKnownAllergicReactionsToTheseMedications: useCountStore.getState().nyKnownAllergicReactionsToTheseMedications[0],
     adhereToTheseMedications: useCountStore.getState().adhereToTheseMedications[0],
     barriersPreventingTreatmentPlan: useCountStore.getState().barriersPreventingTreatmentPlan[0],
-    ifYesWhatAreTheseBarriers: useCountStore.getState().ifYesWhatAreTheseBarriers[0],
+    ifYesWhatAreTheseBarriers: ifYesWhatAreTheseBarriers.join(','),
     membersOrCaregiversInvolvedInYourCare: useCountStore.getState().membersOrCaregiversInvolvedInYourCare[0],
     carryingOutTheseActivities: useCountStore.getState().carryingOutTheseActivities[0],
     natureOfThePain: useCountStore.getState().natureOfThePain[0],

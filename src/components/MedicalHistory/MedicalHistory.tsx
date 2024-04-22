@@ -431,7 +431,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   const index = barriersPreventingTreatmentPlan.indexOf(value);
                   const isSelected = index !== -1;
 
-                  const radio = false;
+                  const radio = true;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
                       useCountStore.setState({ barriersPreventingTreatmentPlan: [value] });
@@ -502,7 +502,7 @@ const MedicalHistory = ({appendSpreadsheet}: any) => {
                   const index = membersOrCaregiversInvolvedInYourCare.indexOf(value);
                   const isSelected = index !== -1;
 
-                  const radio = false;
+                  const radio = true;
                   const RBoxgrouplogic = (): void => {
                     if (radio) {
                       useCountStore.setState({ membersOrCaregiversInvolvedInYourCare: [value] });
