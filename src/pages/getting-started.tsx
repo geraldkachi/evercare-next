@@ -155,8 +155,10 @@ const GettingStarted = ({ token, error }: Props) => {
 
   return (
     <div className="sm:mx-20 max-w-2x">
-      {error ? <div className="">
-        {error}
+      {error ? <div className="flex flex-col justify-center items-center text-center h-screen">
+        {error} <br />
+
+        <div className='mt-10' >Ensure your internet is on and then refresh</div>
       </div> : (
         <div className="flex justify-center h-screen">
           {!token ? <div className="flex items-center justify-center text-3xl text-white bg-[#1C1C1C] h-screen">Loading ...</div> : (
