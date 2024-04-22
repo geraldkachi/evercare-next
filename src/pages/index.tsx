@@ -27,13 +27,6 @@ const Home: React.FC<DashboardProps> = () => {
               <br className="mt-2" />
               Thank you for choosing Evercare Hospital Lekki.
             </div>
-            {/* <div className="text-center text-base md:text-lg font-normal leading-6 my-4">
-              Welcome to Evercare's Selfcare Diagnosis Form—an easy way to
-              prioritize your health. Your proactive step towards understanding
-              your needs is commendable. Let's embark on this wellness journey
-              together. <br className="mt-2" /> Thank you for choosing Evercare—we're here to support you
-            </div> */}
-
             <button onClick={() => {
               setLoading(true);
               router.push('/getting-started')
